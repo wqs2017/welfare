@@ -1,0 +1,88 @@
+<!--pages/order/order.wxml-->
+<scroll-view scroll-y bindscrolltolower="addList" lower-threshold="200" class='page'>
+
+<!-- top box  -->
+<view class='top_box'>
+  <view class='top_btn' data-index='0' bindtap='tabBtn'>
+  <view class='top_text top_text0{{tabStatus}}'>待收货</view>
+  </view>
+  <view class='top_btn top_btn1' data-index='1' bindtap='tabBtn'>
+  <view class='top_text top_text1{{tabStatus}}'>历史订单</view>
+  </view>
+</view>
+<!-- top box end  -->
+
+<!-- 待收货  -->
+<view class='box' wx:if="{{tabStatus==0&&info.data.length>0}}">
+  <!-- 待发货  -->
+  <view wx:for="{{info.data}}" wx:key="item" class='wait_box box' data-id='{{item.order_id}}' data-status='{{item.status}}' bindtap='goOrderDetail'>
+    <view class='order_top'>
+    <view class='order_num'>订单编号：{{item.order_id}}</view>
+    <view class='order_status'>{{item.status == 'enable'?'待付款':(item.status=='pay'?'待发货':(item.status=='send'?'已发货':''))}}</view>
+    </view>
+
+    <view class='order_center box'>
+      <view class='item_box' wx:for="{{item.list}}" wx:for-index="idx" wx:for-item="cItem" wx:key="cItem">
+        <view class='item_img'>
+          <image wx:if="{{cItem.img}}" src='{{cItem.img}}'></image>
+        </view>
+        <view class='item_name over_text'>{{cItem.good_name}}</view>
+        <view class='item_num'>x {{cItem.num}}</view>
+        <view class='item_gold'>返会过鼓励金：￥{{cItem.money}}</view>
+        <view class='item_money'>￥{{cItem.price}}</view>
+      </view>
+    </view>
+
+    <view class='order_bottom'>
+      <view class='b_text1'>实付：￥{{item.fee}}</view>
+      <view class='b_text0'>共{{item.count}}件商品</view>
+    </view>
+
+  </view>
+  <!-- 待发货 完成  -->
+
+</view>
+<!-- 待收货end  -->
+
+<!-- 历史订单  -->
+<view class='box' wx:else>
+
+  <view class='wait_box box' wx:for="{{info.data}}" wx:key="item">
+
+    <view class='order_top'>
+    <view class='order_num'>订单编号：{{item.order_id}}</view>
+    <view data-id='{{item.order_id}}' bindtap='deleteOrder' class='order_status order_delete'>
+    <view class='cover'></view>
+    </view>
+    </view>
+
+    <view class='order_center box'>
+      <view class='item_box'  wx:for="{{item.list}}" wx:for-index="idx" wx:for-item="cItem" wx:key="cItem">
+        <view class='item_img'>
+          <image wx:if="{{cItem.img}}" src='{{cItem.img}}'></image>
+        </view>
+        <view class='item_name over_text'>{{cItem.good_name}}</view>
+        <view class='item_num'>x {{cItem.num}}</view>
+        <view class='item_gold'>返会过鼓励金：￥{{cItem.money}}</view>
+        <view class='item_money'>￥{{cItem.price}}</view>
+      </view>
+    </view>
+
+    <view class='order_bottom'>
+      <view class='b_text1'>实付：￥{{item.fee}}</view>
+      <view class='b_text0'>共{{item.count}}件商品</view>
+    </view>  
+
+  </view>
+
+</view>
+<!-- 历史订单end  -->
+
+<!-- 空状态  -->
+<view wx:if="{{info.data.length==0}}" class='box none_box'>
+    <view class='none_logo'></view>
+    <view class="none_text">暂时没有订单</view>
+</view>
+<!-- 空状态end  -->
+
+</scroll-view>

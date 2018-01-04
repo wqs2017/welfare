@@ -1,0 +1,42 @@
+/* pages/detail/report/report.wxss */
+.top_box{
+  width: 702rpx;
+  height: 150rpx;
+  line-height: 150rpx;
+  border-bottom: 1rpx solid #e6e7e8;
+  margin: 0 auto;
+}
+.top_text0{
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  position: absolute;
+  left: 0;
+  top: 30rpx;
+  font-size: 36rpx;
+  text-align: center;
+}
+.top_text1{
+  width: 100%;
+  height: 33rpx;
+  line-height: 33rpx;
+  position: absolute;
+  left: 0;
+  top: 86rpx;
+  font-size: 24rpx;
+  text-align: center;
+  color: #b2b2b2;
+}
+.img_box{
+  width: 702rpx;
+  position: relative;
+  min-height: 850rpx;
+  margin: 16rpx auto 0;
+}
+.img_box image{
+  width: 100%;
+  height: auto;
+  position: relative;
+  border: 1rpx solid #e6e7e8;
+}
+

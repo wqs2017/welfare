@@ -1,0 +1,19 @@
+/* pages/orderSure/orderSure.wxss */
+
+@import "../cart/cart.wxss";
+
+.order_delete{
+  width: 90rpx;
+  height: 80rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: url(http://ozg7zdnzy.bkt.clouddn.com/fls_delete.png) center center no-repeat;
+  background-size: 30rpx 30rpx;
+}
+.text_right,.last_right{
+  font-weight: 600;
+}
+.b_f_num{
+  z-index: 1;
+}

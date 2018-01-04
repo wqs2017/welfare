@@ -1,0 +1,8 @@
+<!--pages/gold/rule/rule.wxml-->
+<view class='page'>
+
+<view class='box' style="padding:60rpx 24rpx 88rpx;">
+<image style="width:100%;" src="http://ozg7zdnzy.bkt.clouddn.com/fls_give_rule.png" mode='widthFix'></image>
+</view>
+
+</view>

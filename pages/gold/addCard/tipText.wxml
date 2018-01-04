@@ -1,0 +1,13 @@
+<template name="tipText">
+
+<!-- 底部文字  -->
+<view class='tip_box box'>
+<view class='tip_title'>会过鼓励金转代金券说明</view>
+<view class='tip_text0'>1.分享给好友或群</view>
+<view class='tip_text1'>2.好友认购成功后，预售款项会返还到您的微信零钱账户内</view>
+<view class='tip_text1'>3.如果预售不成功，可在下次购物时使用</view>
+
+</view>
+<!-- 底部文字end  -->
+
+</template>

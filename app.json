@@ -1,0 +1,31 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/index/banner/banner",
+    "pages/detail/detail",
+    "pages/detail/report/report",
+    "pages/detail/date/date",
+    "pages/person/person",
+    "pages/follow/follow",
+    "pages/cart/cart",
+    "pages/orderSure/orderSure",
+    "pages/cart/addr/addr",
+    "pages/cart/addAddr/addAddr",
+    "pages/order/order",
+    "pages/order/detail/detail",
+    
+    "pages/gold/gold",
+    "pages/gold/addCard/addCard",
+    "pages/gold/saleCard/saleCard",
+    "pages/gold/getMoney/getMoney",
+    "pages/gold/rule/rule",
+
+    "pages/typeShow/typeShow"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#f29200",
+    "navigationBarTitleText": "善食者联盟",
+    "navigationBarTextStyle":"#fff"
+  }
+}

@@ -1,0 +1,67 @@
+<!--pages/typeShow/typeShow.wxml-->
+<scroll-view scroll-y lower-threshold="" bindscrolltolower="addList" lower-threshold="200" style="z-index:999;position:relative;" scroll-with-animation="true" class='page'>
+
+<!-- 主要内容区域  -->
+<view class='box' style="padding-top:80rpx;">
+
+<!-- 滑动条  -->
+<view class='top_box'>
+
+<view class='top_left'>
+<scroll-view class='top_scroll' scroll-left="{{scrollLeft}}"  scroll-x>
+<view class='type_box' style="width:{{(title.length+1)*180}}rpx;padding-left:4rpx;">
+  <view bindtap='selectBtn' wx:for="{{title}}" wx:key="item"  class='type_item' data-index="{{index}}" data-id="{{item.classify_id}}">
+  <view class='title_text {{item.classify_id==classify_id?"active_title":""}}'>{{item.classify_name}}</view>
+  </view>
+</view>
+</scroll-view>
+</view>
+
+<view class='top_right title_logo{{alertStatus}}' bindtap='alertShow'>更多</view>
+
+</view>
+<!-- 滑动条 end  -->
+
+<!-- item box  -->
+<view wx:if="{{alertStatus==0}}" class='box' style="padding:60rpx 0;">
+
+  <view class='item_out_box'>
+    <view class='item_box' wx:for="{{list}}" wx:key="item" data-id="{{item.good_id}}" bindtap='goDetail' data-index='{{index}}'>
+    
+    <view class='i_img_box'>
+      <view class='i_img_top'>
+      <view class='i_i_text0'>返现</view>
+      <view class='i_i_text1'>{{item.money}}</view>
+      </view>
+      <image wx:if="{{item.img}}" src="{{item.img}}"></image>
+    </view>
+
+    <view class='i_text0 over_text'>{{item.good_name}}</view>
+    <!-- <view class='i_text1'>生产日期：{{item.manufacture}}</view> -->
+    <view class='i_text2'>
+    <text class='i_price_title'>零售价：</text>
+    <text class='i_price'>￥{{item.price}}.</text>
+    <text class='i_num'>{{item.num}}</text>
+    </view>
+
+    </view>  
+  </view>
+
+</view>
+<!-- item box end  -->
+
+<!-- 弹窗  -->
+<view wx:else class='alert_box'>
+<view class='alert_title'>全部分类</view>
+<view class='alert_main'>
+<view wx:for="{{title}}" bindtap='tagSelect' wx:key="item" data-id='{{item.classify_id}}' data-index='{{index}}' class='tag {{item.classify_id==classify_id?"active_tag":""}}'>{{item.classify_name}}</view> 
+</view>
+<view class='tab_btn' bindtap='tagSure'>确定</view>
+</view>
+<!-- 弹窗end -->
+
+</view>
+<!-- 主要内容 end  -->
+
+
+</scroll-view>

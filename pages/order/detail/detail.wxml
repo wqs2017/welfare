@@ -1,0 +1,128 @@
+<!--pages/order/detail/detail.wxml-->
+<view class='page'>
+
+
+  <!-- 订单状态  -->
+    <view class='order_status_box'>
+
+      <view class='status_pic'>
+        <view class='status_a'>
+          <view wx:if="{{status == '1'||status == '2'||status=='3'}}" class='pay_success'></view>
+          <view wx:else class='circle green_circle'></view>
+
+          <view wx:if="{{status=='1'||status == '2'||status=='3'}}" style="background: #46C33B;" class='status_ax'></view>
+          <view wx:else class='status_ax'></view>
+        </view>
+        <view class='status_b'>
+          <view wx:if="{{status == '2'||status=='3'}}" class='pay_success'></view>
+          <view wx:else class='circle default_circle'></view>
+          <view wx:if="{{status == '3'}}" style="background: #46C33B;" class='status_bx'></view>
+          <view wx:else class='status_bx'></view>
+        </view>
+        <view class='status_c'>
+          <view class='circle default_circle'></view>
+        </view>
+      </view>
+
+      <view class='status_text_box'>
+        <view class='status_text'>待发货</view>
+        <view class='status_text'>待收货</view>
+        <view class='status_text'>已收货</view>
+      </view>
+
+    </view>
+  <!-- 订单状态end  -->
+
+  <!-- 订单编号  -->
+  <view class='order_num_box'>
+  <view class='num_type'>{{info.express_name==''?'等待上传单号':info.express_name}}</view>
+  <view class='order_num'>快递单号：{{info.express_order_id==''?'暂无':info.express_order_id}}</view>
+  </view>
+  <view class='order_my_num'>订单编号：{{info.order_id}}</view>
+  <!-- 订单编号end  -->
+
+  <!-- 购物车item  -->
+<view class='box' style="padding: 0 20rpx;background:#fff;">
+
+  <view class='item_box' wx:for="{{info.data}}" wx:key="item">
+    <view class='item_img'>
+      <image wx:if="{{item.img}}" src='{{item.img}}'></image>
+    </view>
+    <view class='item_name over_text'>{{item.good_name}}</view>
+    <view class='item_num'>x {{item.num}}</view>
+    <view class='item_gold over_text'>返会过鼓励金：{{item.money}}</view>
+    <view class='item_money'>{{item.price}}</view>
+  </view>
+
+</view>
+<!-- item end  -->
+
+<!-- price box  -->
+<view class='box' style="margin-top:20rpx;background:#fff;">
+  <view class='text_box'>
+    <view class='text_left'>商品总价</view>
+    <view class='text_right'>{{info.fee}}</view>
+  </view>
+  <view class='text_box'>
+    <view class='text_left'>会过鼓励金抵扣</view>
+    <view class='text_right'>{{info.user_gold}}</view>
+  </view>
+  <view class='text_box'>
+    <view class='text_left text_left0'>返会过鼓励金抵扣</view>
+    <view class='text_right' style="color:#f86566;">+￥{{info.return_gold}}</view>
+  </view>  
+  <view class='text_last_box'>
+    <view class='last_box'>
+      <view class='last_left'>实付</view>
+      <view class='last_right'>￥{{info.real_price}}</view>
+    </view>
+      <view class='last_box'>
+      <view class='last_left'>运费</view>
+      <view class='last_right'>￥{{info.transport}}</view>
+    </view>
+  </view>
+
+
+</view>
+<!-- price box  -->
+
+<!-- 底部说明  -->
+<view class='tip_box box'>
+
+  <view class='tip_title'>
+  温馨提示
+  </view>
+  <view class='tip_text0'>
+  运费说明：
+  </view>
+  <view class='tip_text1'>订单满88元且≤ 2000g免运费，每超出500g加收￥3.0元续重费</view>
+  <view class='tip_text1'>订单处于发货状态时可取消订单</view>
+  <view class='tip_text2'>食品在确认收货后，除物流过程导致包装破损外，不予支持退换货
+  </view>
+
+</view>
+<!-- 底部说明  -->
+
+<!-- fixed  -->
+<view class='fixed_box'>
+  <view bindtap='cancelOrder' class='fixed_left' wx:if="{{status==0}}">
+  取消订单
+  </view>
+  <view wx:else class='fixed_left'>
+  <contact-button class='contact'
+  type="default-light" 
+  size="20"
+  session-from="weapp"
+></contact-button>
+  联系客服
+  </view>
+  <view bindtap='sureGet' hover-class='hover_bg' class='fixed_right'>
+  确认收货
+  </view>
+</view>
+<!-- fixed end  -->
+  
+
+
+
+</view>

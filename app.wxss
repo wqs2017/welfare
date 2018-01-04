@@ -1,0 +1,34 @@
+/**app.wxss**/
+page{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+} 
+view,span,li,ul,text,input{
+  box-sizing:border-box;
+  color: #333;
+  font-size: 28rpx;
+}
+.over_text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.page{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.box{
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}

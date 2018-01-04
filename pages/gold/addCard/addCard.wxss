@@ -1,0 +1,108 @@
+/* pages/gold/addCard/addCard.wxss */
+
+.out_top_box{
+  width: 100%;
+  padding: 40rpx 0 80rpx;
+  border-top: 1rpx solid #fff;
+  background: #fff;
+}
+.item_box{
+  width: 670rpx;
+  height: 340rpx;
+  margin: 0 auto;
+  border-radius: 8rpx;
+}
+.top_box{
+  width: 100%;
+  height: 140rpx;
+  position: relative;
+  background: #ffe3b8;
+}
+.top_text0{
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 36rpx;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  top: 20rpx;
+}
+.top_text1{
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  color: #8c92a5;
+  position: absolute;
+  left: 0;
+  top: 80rpx;
+}
+.b_box{
+  width: 100%;
+  height: 200rpx;
+  background: #fff1db;
+  position: relative;
+  padding: 50rpx 35rpx 0;
+}
+.border_x{
+  width: 670rpx;
+  height: 40rpx;
+  border-bottom: 1rpx dashed #e6e7e8;
+  margin: 0 auto;
+}
+.btn{
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  font-size: 36rpx;
+  text-align: center;
+  line-height: 100rpx;
+  background: #f29200;
+  color: #fff;
+}
+
+
+.sub_box{
+  width: 200rpx;
+  height: 100rpx;
+  position: relative;
+  float: right;
+}
+.sub_box0{
+  border: 1rpx solid #f86566;
+}
+.sub_box1{
+    border: 1rpx solid #d8d8d8;
+}
+/* 加减icon  */
+.sub_icon0{
+  background: #F29200 url(http://ow5o1qil6.bkt.clouddn.com/pp_n_sub.png) center center no-repeat;
+  background-size: 30rpx 30rpx;
+}
+.add_icon0{
+  background: #F29200 url(http://ow5o1qil6.bkt.clouddn.com/pp_n_add.png) center center no-repeat;
+  background-size: 30rpx 30rpx;  
+}
+.sub_icon1{
+  background: #FFDBA2 url(http://ow5o1qil6.bkt.clouddn.com/pp_n_sub.png) center center no-repeat;
+  background-size: 30rpx 30rpx;
+}
+.add_icon1{
+  background: #FFDBA2 url(http://ow5o1qil6.bkt.clouddn.com/pp_n_add.png) center center no-repeat;
+  background-size: 30rpx 30rpx;  
+}
+.order_number{
+  width: 200rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  overflow: hidden;
+  /* padding: 0 22rpx; */
+  float: right;
+  background: #f5f5f9;
+  font-size: 36rpx;
+  text-align: center;
+}
+@import "./tipText.wxss";

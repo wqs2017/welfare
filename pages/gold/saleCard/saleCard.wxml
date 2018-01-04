@@ -1,0 +1,48 @@
+<!--pages/gold/saleCard/saleCard.wxml-->
+<view class='page'>
+
+<!-- top box  -->
+<view class='box top_box'>
+
+  <!-- card  -->
+  <view class='card_box'>
+    <view class='card_name'>会过鼓励金礼品卡</view>
+    <view class='card_id'>{{info.card_id}}</view>
+    <view class='card_price'>
+    <text>￥</text>{{info.money}}
+    </view> 
+    <view class='card_old_price'>￥{{info.balance}}</view>
+  </view>
+  <!-- card end  -->
+
+  <!-- 寄语  -->
+  <view class='edit_box'>
+  
+  <view class='text_box'>
+    <textarea bindinput='textInput' bindblur='sureText' bindconfirm='sureText' value='{{inputText}}' maxlength='50' placeholder-style='color:#888;' placeholder='请点击编辑寄语'></textarea>
+    <view class='num_tip'>{{inputText.length}}/50</view>
+  </view>
+
+  </view>
+  <!-- 寄语 end  -->
+</view>
+<!-- top box end  -->
+
+<!-- 提示  -->
+<import src="../addCard/tipText.wxml"/>
+<template is="tipText"/>
+<!-- 提示 end  -->
+
+
+<!-- 底部  -->
+<view class='fixed_box'>
+  <view class='fixed_left' bindtap='cancelCard'>取消转赠</view>
+  <view class='fixed_right'>
+  分享
+  <button open-type="share" style="position:absolute;width:100%;height:100%;left:0;top:0;opacity:0;"></button> 
+  </view>
+</view>
+<!-- 底部 end  -->
+
+
+</view>

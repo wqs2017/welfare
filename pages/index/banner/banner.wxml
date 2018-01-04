@@ -1,0 +1,9 @@
+<!--pages/index/banner/banner.wxml-->
+
+<view class='page'>
+
+<view class='img'>
+  <image mode="widthFix" wx:if="{{img}}" src="{{img}}"></image>
+</view>
+
+</view>

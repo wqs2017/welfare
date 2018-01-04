@@ -1,0 +1,30 @@
+<!--pages/detail/date/date.wxml-->
+<view class='page'>
+
+<!-- top box  -->
+<view class='top_box'>
+  <view class='top_img'>
+  <image wx:if="{{info.good.img}}" src='{{info.good.img}}'></image>
+  </view>
+  <view class='top_text0'>{{info.good.good_name}}</view>
+  <view class='top_text1'>
+  会过鼓励金:
+  <text class='top_text2'>{{info.good.money}}</text>
+  </view>
+</view>
+<!-- top box end  -->
+
+<!-- mid box  -->
+<view class='mid_box'>
+
+  <view class='mid_title'>选择生产日期</view>
+  <view class='mid_item'  wx:for="{{info.list}}">
+  <view wx:if="{{item.isChecked==true}}" class='mid_btn'>{{item.manufacture}}</view>
+  <view wx:else class='mid_btn' data-id="{{item.good_id}}" bindtap='select' style="background:#ebebeb;color:#888;">{{item.manufacture}}</view>
+  <view class='mid_text'>剩余商品数量：{{item.sur_count}}</view>
+  </view>
+
+</view>
+<!-- mid box end  -->
+
+</view>

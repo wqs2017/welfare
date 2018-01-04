@@ -1,0 +1,22 @@
+<!--pages/cart/addr/addr.wxml-->
+<view class='page'>
+
+<!-- item box  -->
+<view class='item_box' wx:for="{{addrInfo}}" wx:key="item">
+  <view wx:if="{{addrIndex==index}}" class='item_circle item_circle0'></view>
+  <view wx:else bindtap='selectCircle' data-index='{{index}}' class='item_circle'>
+  <view class='cover'></view>
+  </view>
+  <view class='item_name_box'>
+  <view class='item_name'>{{item.username}}</view>
+  <view class='item_tel'>{{item.tel}}</view> 
+  </view>
+  <view class='item_addr'>{{item.province_name+item.city_name+item.area_name+item.addr}}</view>
+  <view class='item_edit' data-index="{{index}}" bindtap='goEdit'>编辑</view>
+</view>
+<!-- item box end  -->
+
+<!-- 新增  -->
+<view class='add_btn' bindtap='goAddAddr'>新增收货人地址</view>
+<!-- 新增end  -->
+</view>

@@ -1,0 +1,35 @@
+<!--pages/follow/follow.wxml-->
+<scroll-view scroll-y lower-threshold="" bindscrolltolower="addList" scroll-top="{{scrollTop}}" lower-threshold="200" style="z-index:999;position:relative;background:#f5f5f9;;" scroll-with-animation="true" class="page">
+
+<!-- item box  -->
+<view wx:if="{{list.length>0}}" class='box'>
+
+<view class='item_box' bindtap='goDetail' data-id='{{item.good_id}}' wx:for="{{list}}" wx:key="item">
+
+  <view class='item_img'>
+  <image wx:if="{{item.img}}" src="{{item.img}}"></image>
+  </view>
+  <view class='item_name over_text'>{{item.good_name}}</view>
+  <view class='item_date'>生产日期：{{item.manufacture}}</view>
+  <view class='item_gold'>返会过鼓励金：￥{{item.money}}</view>
+  <view class='item_price'>￥{{item.price}}</view>
+
+  <view class='item_btn'>加入购物车</view>
+
+</view>
+
+
+</view>
+<!-- item box end  -->
+
+<!-- 空状态  -->
+<view wx:else class='none_box'>
+
+<view class='none_bg'></view>
+<view class='none_text'>您还未关注任何商品</view>
+
+</view>
+<!-- 空状态  -->
+
+
+</scroll-view>

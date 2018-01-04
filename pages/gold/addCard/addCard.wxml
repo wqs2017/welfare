@@ -1,0 +1,58 @@
+<!--pages/gold/addCard/addCard.wxml-->
+<view class='page'>
+
+<!-- top box  -->
+<view class='box out_top_box'>
+
+<!-- 转赠金额  -->
+<view class='item_box box'>
+<view class='top_box'>
+  <view class='top_text0'>转赠金额</view>
+  <view class='top_text1'>转赠金额不得大于会过鼓励金余额</view>
+</view>
+
+<view class='b_box'>
+  <view wx:if="{{money<maxMoney}}" class="sub_box add_icon0"  catchtap='addMoney'></view> 
+        <view wx:else class="sub_box add_icon1" ></view>
+        <input bindinput='inputMoney' type='number' value='{{money}}' maxlength='7' class="order_number over_text"></input>
+        <view wx:if="{{money<2}}" class="sub_box sub_icon1"></view>
+        <view catchtap='subMoney' wx:else class="sub_box sub_icon0"></view>
+</view>
+
+</view>
+<!-- 转赠金额end  -->
+
+<!-- border  -->
+<view class='border_x'></view>
+<!-- border end  -->
+
+<!-- 预期收入  -->
+<view class='item_box box'>
+<view class='top_box' style="background:#a5deff;">
+  <view class='top_text0'>预期收入</view>
+  <view class='top_text1'>请输入预期收入金额</view>
+</view>
+
+<view class='b_box' style="background:#c6eaff;">
+  <view class="sub_box add_icon0"  catchtap='addGetMoney'></view> 
+        <!-- <view wx:else class="sub_box add_icon1" ></view> -->
+        <input bindblur='inputGetMoney' bindconfirm='inputGetMoney' type='number' value='{{getMoney}}' maxlength='7' class="order_number over_text"></input>
+        <view wx:if="{{getMoney<1}}" class="sub_box sub_icon1"></view>
+        <view catchtap='subGetMoney' wx:else class="sub_box sub_icon0"></view>
+</view>
+
+</view>
+<!-- 预期收入 end  -->
+
+</view>
+<!-- top box end  -->
+
+<!-- 提示  -->
+
+<!-- 提示  -->
+<import src="./tipText.wxml"/>
+<template is="tipText"/>
+<!-- 按钮  -->
+<view bindtap='addCard' class='btn'>确定</view>
+<!-- anniu end  -->
+</view>

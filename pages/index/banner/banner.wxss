@@ -1,0 +1,21 @@
+/* pages/index/banner/banner.wxss */
+
+page{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.page{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.img{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.img image{
+  width: 100%;
+  height: auto;
+}

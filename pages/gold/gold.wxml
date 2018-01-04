@@ -1,0 +1,93 @@
+<!--pages/gold/gold.wxml-->
+<scroll-view scroll-y bindscrolltolower="addList" lower-threshold="200" class='page'>
+
+<!-- top box  -->
+<view class='top_box'>
+  <view class='top_item'>
+    <view class='top_text0'>{{info.return_gold}}</view>
+    <view class='top_text1'>冻结</view>
+    <view class='top_x'></view>
+  </view>
+  <view class='top_item'>
+    <view class='top_text0'>{{info. gold}}</view>
+    <view class='top_text1'>余额</view>
+  </view>
+</view>
+<!-- top box end  -->
+
+<!-- 回过鼓励金介绍  -->
+<view class='recommend_box'>
+  <view class='give_rule' bindtap='goGiveRule'>转赠攻略</view>
+  <view class='r_text0'>会过鼓励金</view>
+  <view class='r_text1'>(保质期总天数÷下单时剩余保质期天数）x（零售价-</view>
+  <view class='r_text2'>保质期总天数）=会过鼓励金</view>
+</view>
+<!-- 回过鼓励金介绍end  -->
+
+<!-- list box  -->
+<view class='list_box box' wx:if="{{info.data.length>0}}">
+  <!-- <view class='item_box' wx:for="{{info.data}}" wx:key="item">
+    <view class='list_text0'>{{item.change_reason=='back'?'返还鼓励金':(item.change_reason=="frozen"?'冻结的鼓励金':(item.change_reason=='cancel'?'取消订单返还的鼓励金':(item.change_reason=='cancel_return'?'取消订单扣回的冻结的鼓励金':'支付扣除的鼓励金')))}}</view>
+    <view class='list_text1'>2017-11-5  12:00:08</view>
+    <view class='list_text2' wx:if="{{item.change_count>=0}}">+{{item.change_count}}</view>
+    <view class='list_text2' style="color:#f86566;" wx:else>{{item.change_count}}</view>
+  </view> -->
+  <view class='item_box item_box{{item.change_reason}}' wx:for="{{info.data}}" wx:key="item">
+
+  <view class='box' style="width:100%;height:100%;position:relative;">
+    <view class='item_order_code'>订单：{{item.order_id}}</view>
+  <view class='item_order_date'>{{item.create_date}}</view>
+  <view class='item_order_money'>{{item.pay}}</view>
+
+  <view class='item_back_box'>
+  <view wx:if="{{item.change_reason=='pay'||item.change_reason=='cancel'||item.change_reason=='finish'}}" class='item_back_logo'>返</view>
+  <view style="background:#c9c9c9;" wx:elif="{{item.change_reason=='withdraw'}}" class='item_back_logo'>￥</view>
+  <view wx:else class='item_back_logo' style="background:#f29200;">￥</view>
+
+  <view wx:if="{{item.change_reason=='card'||item.change_reason=='add_card'||item.change_reason=='use'||item.change_reason=='used'||item.change_reason==''}}" class='item_back_num' style="color:#f29200;">{{item.back}}</view>
+  <view style="color:#c9c9c9;" class='item_back_num' wx:elif="{{item.change_reason=='withdraw'}}">{{item.back}}</view>
+  <view wx:else class='item_back_num'>{{item.back}}</view>
+
+
+  <view class='item_back_status' wx:if="{{item.change_reason=='pay'}}" style="color:#f86566;">冻结状态</view>
+  <view class='item_back_status' wx:elif="{{item.change_reason=='cancel'}}">取消返还</view>
+  <view class='item_back_status' wx:elif="{{item.change_reason=='finish'}}">已解冻</view>
+  <view  wx:elif="{{item.change_reason=='withdraw'||(item.change_reason =='card' && item.back ==0)}}" class='item_card_btn' style="background: #c9c9c9;">{{item.back==0?'已赠送':'已提现'}}</view>
+  <view bindtap='getMoney' data-id="{{item.id}}" wx:elif="{{item.change_reason=='card'}}" class='item_card_btn'>提现</view>
+  <view  wx:elif="{{item.change_reason=='add_card'}}" class='item_card_btn' data-id='{{item.order_id}}' bindtap='goCard'>预售中</view>
+  <view  wx:elif="{{item.change_reason=='used'}}" class='item_card_btn' style="background:#c9c9c9;">{{item.pay==0?'已领取':'已到账'}}</view>
+
+  </view>
+  </view>
+
+  </view>
+  <!-- item end  -->
+  
+
+</view>
+<!-- list box end  -->
+
+<!-- 空状态  -->
+<view wx:else class='none_box box'>
+
+<view class='none_bg'></view>
+<view class='none_text'>您暂时没有会过鼓励金</view>
+
+</view>
+<!-- 空状态end  -->
+
+<!-- 转赠btn  -->
+<view class='give_btn' bindtap='giveBtn'>转让/赠送</view>
+<!-- 转赠btn end  -->
+
+<!-- tip box  -->
+<view wx:if="{{alertStatus==1}}" class='tip_out_box' bindtap='tipHide'>
+  <view class='tip_box'>
+  <view class='tip_text0'>该功能暂未上线</view>
+  <view class='tip_text1'>更多优惠活动敬请期待</view>
+  </view>
+  <view class='tip_close'></view>
+</view>
+<!-- tip box end  -->
+
+</scroll-view>

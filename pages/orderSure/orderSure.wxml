@@ -1,0 +1,118 @@
+<!--pages/cart/cart.wxml-->
+<view class='page'>
+
+<!-- 地址  -->
+<view class='addr_box box'>
+
+  <view class='addr_info_box'>
+    <view class='info_text0 over_text'>收货人：{{info.addr.username}}</view>
+    <view class='info_tel'>{{info.addr.tel}}</view>
+    <view class='info_text2'>收货地址：{{info.addr.addr}}</view>
+    <!-- <view class='info_next'></view> -->
+  </view>
+    <!-- <view wx:else bindtap='goAddAddr' class='add_addr'>
+    <view class='add_addr_btn'>添加收货人信息</view>
+  </view> -->
+
+</view>
+<!-- 地址end  -->
+
+<!-- 订单编号  -->
+<view class='order_num'>
+订单编号：{{info.order_id}}
+   <view class='order_delete' bindtap='deleteBtn'></view>
+</view>
+<!-- 订单编号  -->
+
+<!-- 购物车item  -->
+<view class='box' style="padding: 0 20rpx;background:#fff;">
+
+  <view class='item_box' wx:for="{{info.data}}" wx:key="item">
+    <!-- <view class='item_circle item_circle0'></view> -->
+    <!-- <view class='item_circle'></view> -->
+    <view class='item_img' style="left:0;">
+    <image src='{{item.img}}' wx:src="{{item.img}}"></image>
+    </view>
+    <view class='item_name over_text' style="left:136rpx;">{{item.good_name}}</view>
+    <view class='item_num'style='color:#f86566;left:136rpx;'>￥{{item.price}}</view>
+    <view class='item_gold over_text' style="left:136rpx;">返会过鼓励金：￥{{item.money}}</view>
+
+    <!-- 加减  -->
+    <view class='b_f_num'>
+      <!-- <view class="sub_box add_icon0"  catchtap='addLimitNum'>
+      <view class='sub_cover'></view>
+      </view>  -->
+      <!-- <view wx:else class="sub_box add_icon1" ></view> -->
+      <view class="order_number">x {{item.num}}</view>
+      <!-- <view wx:if="{{item.num<2}}" class="sub_box sub_icon1"></view>
+      <view catchtap='subLimitNum' wx:else class="sub_box sub_icon0">
+      <view class='add_cover'></view>
+      </view> -->
+    </view>
+    <!-- 加减  -->  
+  </view>
+
+</view>
+<!-- item end  -->
+
+<!-- price box  -->
+<view class='box' style="margin-top:20rpx;background:#fff;">
+  <view class='text_box'>
+    <view class='text_left'>商品总价</view>
+    <view class='text_right'>{{info.all_price}}</view>
+  </view>
+  <view class='text_box'>
+    <view class='text_left'>会过鼓励金抵扣</view>
+    <view class='text_right'>-{{info.user_gold}}</view>
+  </view>
+  <view class='text_box'>
+    <view class='text_left text_left0'>返会过鼓励金抵扣</view>
+    <view class='text_right' style="color:#f86566;">+{{info.return_gold}}</view>
+  </view>  
+  <view class='text_last_box'>
+    <view class='last_box'>
+      <view class='last_left'>实付</view>
+      <view class='last_right'>￥{{info.real_price}}</view>
+    </view>
+      <view class='last_box'>
+      <view class='last_left'>运费</view>
+      <view class='last_right'>￥{{info.transport}}</view>
+    </view>
+  </view>
+
+
+</view>
+<!-- price box  -->
+
+<!-- 底部说明  -->
+<view class='tip_box box'>
+
+  <view class='tip_title'>
+  温馨提示
+  </view>
+  <view class='tip_text0'>
+  运费说明：≤2000g免于费，每超出500g增加￥1.0元续重费
+  </view>
+  <view class='tip_text1'>订单处于发货状态时可取消订单</view>
+  <view class='tip_text2'>食品在确认收货后，除物流过程导致包装破损外，不予支持退换货
+  </view>
+
+</view>
+<!-- 底部说明  -->
+
+<!-- fixed  -->
+<view class='fixed_box'>
+  <view class='fixed_left'>
+  <text>合计</text>
+  ￥{{info.real_price+info.transport}}
+  </view>
+
+  <view wx:if="{{btnStatus==0}}" bindtap='payBtn' class='fixed_right' hover-class='hover_bg'>
+  确认付款
+  </view>
+  <view class='fixed_right' wx:else style="background:#c9c9c9;">确认付款</view>
+
+</view>
+<!-- fixed end  -->
+
+</view>

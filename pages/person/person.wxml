@@ -1,0 +1,37 @@
+<!--pages/person/person.wxml-->
+<view class='page'>
+   
+   <!-- top box  -->
+  <view class='top_box'>
+  <view class='top_img'>
+  <image wx:if="{{user.avatarUrl}}" src="{{user.avatarUrl}}"></image>
+  </view>
+  <view class='top_name'>{{user.nickName}}</view>
+  <view class='top_data'>
+    <view class='top_item'>
+      <view class='top_text0'>{{info.return_gold}}</view>
+      <view class='top_text1'>冻结(元)</view>
+      <view class='top_x'></view>
+    </view>
+    <view class='top_item'>
+      <view class='top_text0'>{{info.gold}}</view>
+      <view class='top_text1'>余额(元)</view>    
+    </view>
+  </view>
+  </view>
+  <!-- top box end  -->
+
+  <!-- foot box  -->
+  <view class='foot_box'>
+    <view class='foot_text0' bindtap='goOrder'>订单管理</view>
+    <view class='foot_text foot_text1' bindtap='goGold'>会过鼓励金</view>
+    <view class='foot_text foot_text2' bindtap='goFollow'>我的关注</view>
+     <view class='foot_text foot_text3'> 
+      <button open-type="contact"></button>
+      联系客服
+    </view> 
+
+  </view>
+  <!-- foot box end  -->
+
+</view>

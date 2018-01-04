@@ -1,0 +1,170 @@
+
+<scroll-view scroll-y bindscroll="pageScroll" lower-threshold="" bindscrolltolower="addList" scroll-top="{{scrollTop}}" lower-threshold="200" style="z-index:999;position:relative;background:#f5f5f9;;" scroll-with-animation="true" class="page">
+
+  <!-- banner  -->
+  <view class='banenr_box'>
+    <view class='banner_title0'>今日推荐</view>
+    <view class='banner_title1'>善食者联盟，敢为天下鲜</view>
+    <swiper class='banner' indicator-dots="false"
+    autoplay="true" circular='true' interval="2000" duration="1000">
+    <block wx:key="item" wx:for="{{banners}}">
+      <swiper-item bindtap="goBanner" data-img="{{item.detail_img}}" style="width:100%;height:100%;">
+        <image style="width:100%;height:100%;" src="{{item.banner_img}}" class="slide-image"/>
+      </swiper-item>
+    </block>
+  </swiper>
+   
+  <view class='bottom_border'></view> 
+  </view>
+  <!-- banner end -->
+
+  <!-- center box  -->
+  <view class='center_tip'>只为更懂你</view>
+  <view scroll-x class='center_scroll'>
+  <view class='center_box' style="width:{{230*3}}rpx">
+    <view bindtap='goTypeShow' data-index='{{index}}' class='center_item' wx:for="{{[0,0,0]}}" wx:key="item">
+    <view class='center_cover'></view>
+    <view class='center_text'>{{index==0?'精选美食':(index=='1'?'本地生活':'福利中心')}}</view>
+    <view class='center_hot'></view>
+    <image src="http://ozg7zdnzy.bkt.clouddn.com/fls_mid{{index}}.png"></image>
+    </view>
+  </view>
+  </view>
+  <!-- center box  -->
+
+  <view class='box' style="padding-bottom:100rpx;">
+
+  <view class='hot_title'>热销商品</view>
+  <!-- item box  -->
+  <!-- <view class='item_box box' wx:for="{{list}}" wx:key="item" data-id="{{item.good_id}}" bindtap='goDetail' data-index='{{index}}'>
+
+  <view class='item_name over_text'>{{item.good_name}}</view>
+  <view class='item_date'>{{item.manufacture}}</view>
+  <view class='item_price'>￥{{item.price}}</view>
+
+  <view class='item_bottom'>
+    <view class='item_left'>
+      <view class='item_circle' wx:for="{{[0,1,2,3,4,5,6,7,8,9,10,11]}}" wx:key="childItem" wx:for-item="childItem" wx:for-index="idx" style='left:{{idx*36+20}}rpx;' >
+      <view wx:if="{{idx<=item.percent}}" class='item_circle_bg0'></view>
+      <view wx:else class='item_circle_bg1'></view>
+      </view>
+      <view class='item_head' style="left:{{item.percent*36+16}}rpx;">
+        <view class='item_triangle'></view>
+        <view wx:if="{{item.percent>=2&&item.percent<11}}" class='item_head_num'>
+          {{item.dayMoney}}
+          <text>元/天</text> 
+        </view>
+        <view wx:elif="{{item.percent==11||item.percent==12}}" class='item_head_num'  style='margin-left:0;left:-96rpx;'>
+          {{item.dayMoney}}<text>元/天</text>
+        </view>
+        <view wx:else style="margin-left:0;left:-3rpx;" class='item_head_num'>
+          {{item.dayMoney}}<text>元/天</text>
+        </view>
+      </view>
+    </view>
+    <view class='item_right'>
+    <image wx:if="{{item.img}}" src="{{item.img}}"></image>
+    </view>
+  </view>
+
+  </view> -->
+  <!-- item box end  -->
+
+  <!-- item box  -->
+  <view class='item_out_box'>
+    <view class='item_box' wx:for="{{list}}" wx:key="item" data-id="{{item.good_id}}" bindtap='goDetail' data-index='{{index}}'>
+    
+    <view class='i_img_box'>
+      <view class='i_img_top'>
+      <view class='i_i_text0'>返现</view>
+      <view class='i_i_text1'>{{item.money}}</view>
+      </view>
+      <image wx:if="{{item.img}}" src="{{item.img}}"></image>
+    </view>
+
+    <view class='i_text0 over_text'>{{item.good_name}}</view>
+    <!-- <view class='i_text1'>生产日期：{{item.manufacture}}</view> -->
+    <view class='i_text2'>
+    <text class='i_price_title'>零售价：</text>
+    <text class='i_price'>￥{{item.price}}.</text>
+    <text class='i_num'>{{item.num}}</text>
+    </view>
+
+    </view>  
+  </view>
+  <!-- item box end  -->
+  </view>
+
+  <!-- fixed 个人信息  -->
+  <view class='fixed_box'>
+
+  <view class='user_img' bindtap='goPerson'>
+    <image wx:if="{{userInfo.img}}" src="{{userInfo.img}}"></image>
+    <view wx:if="{{carts>0}}" class='circle_tip'></view>
+  </view>
+
+  <view class='username' bindtap='goPerson'>{{userInfo.nick_name}}
+  </view>
+
+  <view class='username_border'></view>
+
+  <view class='user_cart' bindtap='goCart'>
+    <view class='cart_num'>{{carts}}</view>
+  </view>
+
+  </view>
+  <!-- fixed 个人信息  -->
+
+
+  <!-- 引导页  -->
+  <view wx:if="{{alertStatus==1}}" class='lead_box'>
+  <view bindtap='leadHide' class='lead_out_cover'></view>
+  <view class='lead_img'>
+  <view bindtap='leadHide' class='lead_cover'></view>
+  <view class='lead_btn' bindtap='leadHide'>立即使用</view>
+  </view>
+  <!-- <view class='lead_btn_box' bindtap='leadHide'>
+    <view class='lead_btn'>进入</view>
+  </view> -->
+  </view>
+  <!-- 引导页面end  -->
+
+  <!-- 购买卡券  -->
+  <view wx:elif="{{alertStatus==2}}" class='alert_box'>
+  
+  <view class='alert_cover' bindtap='leadHide'></view>
+  <view class='alert_card_box'>
+  <!-- card  -->
+  <view class='card_box'>
+    <view class='card_name'>会过鼓励金礼品卡</view>
+    <view class='card_id'>{{card_info.card_id}}</view>
+    <view class='card_price'>
+    <text>￥</text>{{card_info.money}}
+    </view> 
+    <view class='card_old_price'>￥{{card_info.balance}}</view>
+  </view>
+  <!-- card end  -->
+
+  <!-- 寄语  -->
+  <view class='a_tip_box'>
+    <view class='a_tip_title'>寄语</view>
+    <view class='a_tip_text' wx:if="{{card_info.memo}}">{{card_info.memo}}</view>
+    <view wx:else class='a_tip_text'>善食者联盟，敢为天下鲜!</view>
+    <view class='a_tip_user'>
+      <view class='a_tip_name'>{{card_info.nick_name}}</view>
+      <view class='a_tip_img'>
+      <image wx:if="{{card_info.img}}" src='{{card_info.img}}'></image>
+      </view>
+    </view>
+  </view>
+  <!-- 寄语end  -->
+
+  <!-- 立即购买  -->
+  <view wx:if="{{card_info.money==0}}" class='card_buy' catchtap='buyCard'>立即使用</view>
+  <view wx:else class='card_buy' catchtap='buyCard'>立即购买</view>
+  <!-- 立即购买  -->
+  </view>
+
+  </view>
+  <!-- 购买卡券 end  -->
+</scroll-view>

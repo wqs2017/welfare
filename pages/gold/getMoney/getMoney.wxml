@@ -1,0 +1,31 @@
+<!--pages/gold/getMoney/getMoney.wxml-->
+<view class='page'>
+
+
+<!-- top box  -->
+<view class='box top_box'>
+
+  <!-- card  -->
+  <view class='card_box'>
+    <view class='card_img'></view>
+    <view class='cart_nickname text_over'>哈哈哈</view>
+    <view class='card_price'>
+    <text>￥</text>50.0
+    </view> 
+    <view class='card_old_price'>￥100</view>
+  </view>
+  <!-- card end  -->
+
+</view>  
+
+
+<!-- 提示语  -->
+<import src="../addCard/tipText.wxml"/>
+<template is="tipText"/>
+<!-- 提示语  -->
+
+
+<!-- btn  -->
+<view class='btn'>提现</view>
+<!-- btn  -->
+</view>

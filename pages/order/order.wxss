@@ -1,0 +1,174 @@
+/* pages/order/order.wxss */
+page{
+  background: #f5f5f9;
+}
+.top_box{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #fff;
+}
+.top_btn{
+  width: 50%;
+  height: 50rpx;
+  position: relative;
+  float: left;
+  padding-left: 180rpx;
+}
+.top_btn1{
+  float: right;
+  padding-left: 0;
+  padding-right: 180rpx;
+  text-align: right;
+}
+.top_text{
+  height: 80rpx;
+  line-height: 80rpx;
+  overflow: hidden;
+  display: inline-block;
+  color: #888;
+}
+.top_text11,.top_text00{
+  color: #333;
+  border-bottom: 6rpx solid #333;
+}
+.wait_box{
+  margin-top: 20rpx;
+  background: #fff;
+  padding: 0 24rpx;
+}
+.order_top{
+  width: 100%;
+  height: 102rpx;
+  border-bottom: 1rpx solid #e6e7e8;
+  line-height: 102rpx;
+  position: relative;
+}
+.order_num{
+  width: 500rpx;
+  height: 102rpx;
+  line-height: 102rpx;
+  float: left;
+  font-size: 30rpx;
+  color: #888;
+}
+.order_status{
+  height: 102rpx;
+  line-height: 102rpx;
+  float: right;
+  color: #888;
+}
+.item_box{
+  width: 100%;
+  height: 160rpx;
+  position: relative;
+  padding-top: 40rpx;
+}
+.item_img{
+  width: 120rpx;
+  height: 120rpx;
+  position: absolute;
+  left: 0;
+  top: 40rpx;
+}
+.item_img image{
+  width: 100%;
+  height: 100%;
+}
+.item_name{
+  width: 470rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  position: absolute;
+  left: 136rpx;
+  top: 40rpx;
+  font-size: 30rpx;
+}
+.item_num{
+  width: 220rpx;
+  height: 34rpx;
+  line-height: 34rpx;
+  position: absolute;
+  left: 136rpx;
+  top: 88rpx;
+  color: #b2b2b2;
+  font-size: 24rpx;
+}
+.item_gold{
+  width: 470rpx;
+  height: 34rpx;
+  position: absolute;
+  top: 130rpx;
+  left: 136rpx;
+  color: #b2b2b2;
+  font-size: 24rpx;
+}
+.item_money{
+  width: 220rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  font-size: 30rpx;
+  position: absolute;
+  right: 24rpx;
+  top: 78rpx;
+  text-align: right;
+}
+.order_bottom{
+  width: 100%;
+  height: 100rpx;
+  padding-top: 40rpx;
+  position: relative;
+}
+.b_text1{
+  height: 45rpx;
+  line-height: 45rpx;
+  float: right;
+  font-size: 32rpx;
+  overflow: hidden;
+}
+.b_text0{
+  color: #888;
+  height: 45rpx;
+  line-height: 45rpx;
+  float: right;
+  overflow: hidden;
+  margin-right: 20rpx;
+}
+
+.order_delete{
+  width: 32rpx;
+  background: url(http://ozg7zdnzy.bkt.clouddn.com/fls_delete.png) right center no-repeat;
+  background-size: 30rpx 30rpx;
+}
+.none_box{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: relative;
+}
+.none_logo{
+  width: 162rpx;
+  height: 162rpx;
+  margin: 300rpx auto 0;
+  position: relative;
+  background: url(http://ovfvqovd5.bkt.clouddn.com/fls_icon_order.png) center center;
+  background-size: 100% 100%;
+}
+.none_text{
+  width: 100%;
+  height: 45rpx;
+  line-height: 45rpx;
+  margin: 30rpx auto 0; 
+  font-size: 32rpx;
+  color: #888;
+}
+.none_btn{
+  width: 240rpx;
+  height: 72rpx;
+  margin: 60rpx auto 0;
+  border-radius: 4rpx;
+  border: 1rpx solid #f29200;
+  line-height: 70rpx;
+  color: #f29200;
+  font-size: 32rpx;
+}

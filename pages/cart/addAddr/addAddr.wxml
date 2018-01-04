@@ -1,0 +1,61 @@
+<!--pages/cart/addAddr/addAddr.wxml-->
+<view class='page'>
+
+<view class='box addr_box'>
+
+<view class='text_box'>
+<view class='text_left'>收货人姓名</view>
+<input data-type="name" bindinput='inputText' placeholder-style='color:#b2b2b2;' value="{{username}}"  class='text_input' placeholder='请填写收货人姓名'></input>
+</view>
+
+<view class='text_box'>
+<view class='text_left'>电话<text>*</text></view>
+<input data-type="phone" bindinput='inputText' placeholder-style='color:#b2b2b2;' value='{{tel}}' class='text_input' placeholder='请填写电话号码' type='number' maxlength='11'></input>
+</view>
+
+<!-- 省市  -->
+<view class='text_box' bindtap='pickerShow'>
+<view class='text_left'>收货地址<text>*</text></view>
+<view wx:if="{{city==''||province==''}}" class='text_right'>选择省市</view>
+<view wx:else class='text_right'>{{province}} {{city}} {{area}}</view>
+</view>
+<!-- 省市end  -->
+<view class='text_box' style="border:0;">
+<view class='text_left'>街道地址<text>*</text></view>
+<input data-type="addr" value='{{addr}}' bindinput='inputText' placeholder-style='color:#b2b2b2;' class='text_input' placeholder='请填写门店地址'></input> 
+  <!-- <view class='text_right'>北京市朝阳区霄云路32甲麦子店西街嘉和丽园公寓C座</view>   -->
+</view>
+
+
+</view>
+
+<!-- fixde box  -->
+<view wx:if="{{username==''||tel.length<11||addr==''||city==''||btnStatus==1}}" class='fixed_box' >确定</view>
+<view wx:else hover-class='hover_btn' bindtap='sureBtn' class='fixed_box sureBtn0'>确定</view>
+<!-- fixde box  -->
+</view>
+
+
+<!-- picker view  -->
+<view class='picker_box' wx:if="{{pickerStatus==1}}">
+
+    <picker-view class="picker_view" indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{pickerValue}}" bindchange="pickerChange">
+
+    <view class="picker_cancel" bindtap="pickerCancel">取消</view>
+    <view class="picker_sure" bindtap="pickerSure">确定</view>
+
+    <picker-view-column class="picker_item_box">
+      <view wx:for="{{data.province}}" style="line-height: 50px;text-align:center;" wx:key="item">{{item.name}}</view>
+    </picker-view-column>
+
+    <picker-view-column class="picker_item_box">
+        <view wx:for="{{data.city[provinceId]}}" style="line-height: 50px;text-align:center;" wx:key="item">{{item.name}}</view>
+    </picker-view-column>
+
+    <picker-view-column class="picker_item_box">
+        <view wx:for="{{data.area[cityId]}}" style="line-height: 50px;text-align:center;" wx:key="item">{{item.name}}</view>
+    </picker-view-column>
+  </picker-view>
+
+</view>
+<!-- picker view  -->

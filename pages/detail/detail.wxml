@@ -1,0 +1,290 @@
+<!--pages/detail/detail.wxml-->
+<view class='page'>
+
+    <!-- 基本信息  -->
+    <view class='box'>
+      <!--   -->
+      <view class='product_img'>
+      <swiper class='banner' indicator-active-color="#ffffff" indicator-color="rgba(255,255,255,0.3)" indicator-dots="false"
+        autoplay="true" circular='true' interval="2000" duration="1000">
+        <block wx:key="item" wx:for="{{product.img}}">
+          <swiper-item bindtap="goBanner" data-img="{{item}}" style="width:100%;height:100%;">
+            <image style="width:100%;height:100%;" src="{{item}}" class="slide-image"/>
+          </swiper-item>
+        </block>
+        <view class="product_name product_brand over_text">{{product.name[0]}}</view>
+      <view class='product_name product_name1 over_text'>{{product.name[1]}}</view>
+      </swiper>
+      </view>
+
+      <!--  -->
+      <!-- <view class='product_num_box'>
+        <view class='product_num'>
+        <view class='num_text0'>{{product.money}}元</view>
+        <view class='num_text1'>商品价值</view>
+        </view>
+        <view class='product_num'>
+        <view class='num_text0'>{{product.total_day-product.sur_day}}天</view>
+        <view class='num_text1'>过期天数</view>
+        </view>
+        <view class='product_num'>
+        <view class='num_text0'>{{product.sur_day}}</view>
+        <view class='num_text1'>剩余天数</view>
+        </view>
+      </view> -->
+      <view class='top_b_box'>
+        <view class='top_b_left over_text'>剩余：{{product.sur_count}}</view>
+        <view class='top_b_r_box'>
+          <view class='users_img'>
+          
+          <view class='img_item' style="right:{{index*30+24}}rpx;z-index:{{9-index}};" wx:for="{{info.follows}}" wx:key="item">
+          <view wx:if="{{info.total_records>5&&index==0}}" class='item_img_text'>{{info.total_records
+-5}}+</view>
+          <image wx:elif="{{item.icon}}" src="{{item.icon}}"></image>
+          
+          </view>
+          </view> 
+          <view wx:if="{{info.follow==false}}" bindtap='followBtn' data-req='follow' class='follow_btn'>关注</view>
+           <view wx:else bindtap='followBtn' data-req='cancel' class='follow_btn' style="background:#c9c9c9;">已关注</view> 
+        </view>
+      </view>
+
+    </view>
+    <!-- 基本信息 end  -->
+
+
+    <!-- 商品详情  -->
+    <view class='box' style='margin: 20rpx 0 0;'>
+
+      <!-- 吃豆人盒子  -->
+      <!-- <view class='title_box'>
+        <view class='title'>会过鼓励金</view>
+      </view> -->
+      <view class='cdr_top_box'>
+        <view class='cdr_top_text0'>会过鼓励金</view>
+        <view class='cdr_top_text1'>=商品价值*生产至今天数</view>
+        <view class='cdr_top_text2'>￥{{product.money
+}}</view>
+      </view>
+      <view class='chidouren_box'>
+        <view class='item_circle' wx:for="{{[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]}}" wx:key="childItem" wx:for-item="childItem" wx:for-index="idx" style='left:{{idx*36+20}}rpx;' >
+        <view wx:if="{{idx<product.percent}}" class='item_circle_bg0'></view>
+        <view wx:else class='item_circle_bg1'></view>
+        </view>
+        <view class='item_head' style="left:{{product.percent*36+10}}rpx;">
+          <view wx:if="{{product.percent>=17}}" class='item_triangle' style="margin-left:-12rpx;"></view>
+          <view wx:else class='item_triangle'></view>
+          <view wx:if="{{product.percent>=3&&product.percent<17}}" class='item_head_num'>
+          {{product.dayMoney}}<text>元/天</text> 
+          </view>
+          <view wx:elif="{{product.percent==16}}" class='item_head_num' style='margin-left:0;left:-60rpx;'>{{product.money}}</view>
+          <view wx:elif="{{product.percent==17||product.percent==18}}" class='item_head_num'  style='margin-left:0;left:-110rpx;'>
+            {{product.dayMoney}}<text>元/天</text> 
+          </view>
+          <view wx:else style="margin-left:0;left:-10rpx;" class='item_head_num'>
+            {{product.dayMoney}}<text>元/天</text> 
+          </view>
+        </view>
+      </view>
+      <!-- 吃豆人盒子 end  -->
+      <!-- 吃豆人底部  -->
+      <view class='cdr_b_box'>
+        <view class='cdr_item'>
+        <view class='cdr_item0'>{{product.total_day-product.sur_day}}</view>
+        <view class='cdr_item1'>生产至今(天)</view>
+        </view>
+        <view class='cdr_item'>
+        <view class='cdr_item0'>{{product.total_day}}</view>
+        <view class='cdr_item1'>保质期(天)</view>
+        </view>
+      </view>
+      <!-- 吃豆人底部  -->
+
+      <!-- 商品详情in  -->
+      <view class='box' style='margin: 20rpx 0 0;'>
+      
+        <view class='text_box' style="margin-top:40rpx;">
+          <view class='text_title'>规格型号</view>
+          <view class='text_right'>{{product.model}}</view>
+        </view>
+        <view class='text_box' bindtap='goDate'>
+          <view class='text_title'>生产日期</view>
+          <view class='text_right text_next'>{{product.manufacture}}</view>
+        </view>
+        <view bindtap='goReport' class='text_box'>
+          <view class='text_title'>安心保障</view>
+          <view wx:if="{{product.report_name==null}}" class='text_right  text_next'>/</view>
+          <view wx:else class='text_right  text_next'>{{product.report_name}}</view>
+        </view>
+
+      </view>
+      <!-- 商品详情 in end  -->
+  </view>
+  <!-- 商品详情  -->
+
+    <!-- 配料表营养成分  -->
+    <view class='box' style='display:none;margin: 20rpx 0 0;padding: 0 24rpx;'>
+
+    
+      <view class='title_box'>
+        <view class='title'>配料表</view>
+      </view>
+      <view class='tag_box'>
+        <view class='tag'>燕麦</view>
+        <view class='tag'>蜂蜜</view>
+        <view class='tag'>面粉</view>
+        <view class='tag'>植物油</view>
+        <view class='tag'>超浓芝士</view>
+        <view class='tag'>芝麻</view>
+        <view class='tag'>红糖</view>
+      </view>
+    <!-- 配料表end  -->
+    <!-- 营养成分  -->
+    <view class='box' style="margin-top:30rpx;padding-bottom:40rpx;border-top:1rpx solid #e6e7e8;">
+      <view class='title_box'>
+          <view class='title'>营养成分</view>
+      </view>    
+      <view class='nutrition_box'>
+        <view class='nutrition_in'>
+          <view class='n_left'>能量</view>
+          <view class='n_right'>1200千焦(KJ)</view>
+        </view>
+        <view class='nutrition_in'>
+          <view class='n_left'>能量</view>
+          <view class='n_right'>1200千焦(KJ)</view>
+        </view>
+        <view class='nutrition_in'>
+          <view class='n_left'>能量</view>
+          <view class='n_right'>1200千焦(KJ)</view>
+        </view>
+        <view class='nutrition_in'>
+          <view class='n_left'>能量</view>
+          <view class='n_right'>1200千焦(KJ)</view>
+        </view>
+        <view class='nutrition_in'>
+          <view class='n_left'>能量</view>
+          <view class='n_right'>1200千焦(KJ)</view>
+        </view>
+      </view>
+
+    </view>
+    <!-- 营养成分end  -->
+    
+    </view>
+    <!-- 配料表营养成分end  -->
+
+    <!-- 消费保证  -->
+    <view class='box' style="margin-top:20rpx;padding-bottom:220rpx;padding-top:40rpx;">
+      <view class='ensure_title_box'>
+      <view class='e_t_img'></view>
+      <view class='e_t_text0'>善食者联盟</view>
+      <view class='e_t_text1'>所在地：北京</view>
+      </view>
+      <view class='ensure_logo_box'>
+        <view class='logo_item'>
+          <view class='e_logo e_logo0'></view>
+          <view class='e_text'>正品保证</view>
+        </view>
+        <view class='logo_item'>
+          <view class='e_logo e_logo1'></view>
+          <view class='e_text'>满88包邮</view>
+        </view>
+        <view class='logo_item'>
+          <view class='e_logo e_logo2'></view>
+          <view class='e_text'>破损包退</view>
+        </view>     
+        <view class='logo_item'>
+          <view class='e_logo e_logo3'></view>
+          <view class='e_text'>赔付保证</view>
+        </view>            
+      </view>  
+
+      <view class='ensure_img'>
+      <!-- <view wx:if="{{product.detail_img==null||product.detail_img=='/'}}"></view>
+      <image wx:else src='{{product.detail_img}}' mode="widthFix"></image> -->
+      <image src='https://img.shanshizhe.cn/fls_detail_img.jpeg' mode="widthFix"></image>
+      </view>
+
+    </view>
+    <!-- 消费保证end  -->
+
+    <!-- fixed  -->
+    <view class='fixed_box'>
+      <view class='fixed_left'>￥{{totalPrice}}</view>
+      <view class='fixed_right' bindtap='alertShow'>加入购物车</view>
+    </view>
+    <!-- fixed end  -->
+
+
+  <!-- alert box start -->
+  <view wx:if="{{alertStatus>=1}}" class='alert_out_box' bindtap='alertHide' >
+
+    <view class='alert_in_box' catchtap='alertShow' >
+
+    <!-- top  -->
+    <view class='b_t_box'>
+     <view class='order_close' catchtap='alertHide'></view>
+     <view class='order_img'>
+      <image wx:if="{{product.img}}" src="{{product.img}}"></image>
+     </view>
+     <view class='order_text over_text'>{{product.good_name}}</view>
+     <view class='order_price'>￥{{totalPrice}}</view>
+     <view class='order_s_num'>
+        <view class='n_s_title' style='text-align:center;'>剩余数量</view>
+        <view class='n_s_text' style="line-height:53rpx;height:53rpx;font-size:38rpx;">
+          {{product.sur_count}}<text style="line-height:65rpx;font-size:24rpx;">份</text>
+        </view>
+      </view>
+    </view>
+    <!-- top end  -->
+    <!-- center  -->
+    <view class='b_c_box'>
+    <view class='b_c_title' wx:if="{{info.types.length>0}}">选择口味</view>
+      <view class='b_c_tag_box'  wx:if="{{info.types.length>0}}">
+        <view class='b_c_tag' wx:for="{{info.types}}" wx:key="item">
+          <view wx:if="{{item.isChecked==true}}" class='b_c_tag_in'>{{item.type}}</view>
+          <view wx:else data-index="{{index}}" data-id='{{item.good_id}}' bindtap='selectType' class='b_c_tag_in' style="background:#ebebeb;color:#888;">{{item.type}}</view>
+
+        </view>
+      </view>
+      <view class='b_c_title'>选择生产日期</view>
+      <view class='b_c_tag_box'>
+        <view class='b_c_tag' wx:for="{{list}}" wx:key="item">
+          <view wx:if="{{item.isChecked==true}}" class='b_c_tag_in'>{{item.manufacture}}</view>
+          <view wx:else data-index="{{index}}" data-id='{{item.good_id}}' bindtap='selectDate' class='b_c_tag_in' style="background:#ebebeb;color:#888;">{{item.manufacture}}</view>
+
+        </view>
+      </view>
+    </view>
+    <!-- center end  -->
+    <!-- footer  -->
+    <view class='b_f_box'>
+      <view class='b_f_title'>采购数量</view>
+      <view class='b_f_num'>
+
+        <view wx:if="{{limitNum<product.sur_count}}" class="sub_box add_icon0"  catchtap='addLimitNum'>
+        <view class='sub_cover'></view>
+        </view> 
+        <view wx:else class="sub_box add_icon1" ></view>
+        <view class="order_number">{{limitNum}}</view>
+        <view wx:if="{{limitNum<2}}" class="sub_box sub_icon1"></view>
+        <view catchtap='subLimitNum' wx:else class="sub_box sub_icon0">
+        <view class='add_cover'></view>
+        </view>
+
+
+      </view>
+    </view>
+    <!-- footer end  -->
+
+    <!-- order btn  -->
+    <view wx:if="{{orderBtnStatus==0}}" hover-class="hover_btn" class='order_btn' bindtap='orderBtn'>加入购物车</view>
+    <view wx:else class='order_btn active_order_btn' hover hover-class="hover_btn" catchtap="addCart">加入购物车</view>
+    <!-- order btn end  -->
+    </view>
+    <!-- alert in box end  -->
+
+  </view>
+  <!-- alert box end  -->
+
+</view>
